@@ -6,7 +6,7 @@ export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
 
   private recipes: Recipe[] = [new Recipe('Spaghetti Bolognese',
-    'Timon secret super special Bolognese',
+    'Timon secret special Bolognese',
     'https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg',
     [new Ingredient('Bolognese', 20),
       new Ingredient('Pasta', 50)
@@ -19,5 +19,9 @@ export class RecipeService {
 
   getRecipe() {
     return this.recipes.slice(); // slice returns a copy of the recipe matrix
+  }
+
+  getRecipes(index: number) {
+    return this.recipes.slice()[index];
   }
 }
