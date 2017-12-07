@@ -1,7 +1,9 @@
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
+import { Subject } from 'rxjs/Subject';
 
 export class RecipeService {
+  recipesChanged = new Subject<Recipe[]>();
   private recipes: Recipe[] = [new Recipe('Spaghetti Bolognese',
     'Timon secret special Bolognese',
     'https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg',
@@ -20,5 +22,15 @@ export class RecipeService {
 
   getRecipes(index: number) {
     return this.recipes.slice()[index];
+  }
+
+  addRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+    this.recipesChanged.next(this.recipes.slice())
+  }
+
+  updateRecipe(newRecipe: Recipe, index: number) {
+    this.recipes[index] = newRecipe;
+    this.recipesChanged.next(this.recipes.slice())    
   }
 }
