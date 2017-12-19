@@ -16,11 +16,16 @@ export class RecipeService {
       [new Ingredient('Chicken', 2000),
         new Ingredient('Pasta', 50)])];
 
-  getRecipe() {
+  getRecipes() {
     return this.recipes.slice(); // slice returns a copy of the recipe matrix
   }
 
-  getRecipes(index: number) {
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  getRecipe(index: number) {
     return this.recipes.slice()[index];
   }
 
