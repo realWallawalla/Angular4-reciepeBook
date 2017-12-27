@@ -6,12 +6,11 @@ import { RecipeDetailComponent } from '../recipes/recipe-detail/recipe-detail.co
 import { RecipeStartComponent } from '../recipes/recipe-start/recipe-start.component';
 import { RecipesEditComponent } from '../recipes/recipes-edit/recipes-edit.component';
 import { RecipesComponent } from '../recipes/recipes.component';
-import { AuthGuard } from '../auth/auth-guard.service';
-
+import { AuthGuard } from "../auth/auth-guard.service";
 
 
 const recipesRoutes: Routes = [
-    {path: 'recipes', component: RecipesComponent, children : [
+    {path: '', component: RecipesComponent, children : [
         {path: 'new', component: RecipesEditComponent, canActivate: [AuthGuard] },
         {path: ':id', component: RecipeDetailComponent},
         {path: ':id/edit', component: RecipesEditComponent, canActivate: [AuthGuard]},
@@ -23,6 +22,11 @@ const recipesRoutes: Routes = [
     imports: [
         RouterModule.forChild(recipesRoutes)
     ],
-    exports: [RouterModule]
+    exports: [
+        RouterModule
+    ],
+    providers: [
+         AuthGuard
+    ]
 })
 export class RecipesRoutingModule{}   
