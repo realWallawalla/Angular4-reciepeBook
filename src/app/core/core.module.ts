@@ -22,7 +22,7 @@ import { AuthService } from "../auth/auth.service";
     ],
     exports: [
         AppRoutingModule,
-        HeaderComponent
+        HeaderComponent,
     ],
     providers: [
         ShoppingListService,
