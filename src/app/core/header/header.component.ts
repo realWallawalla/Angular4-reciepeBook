@@ -11,9 +11,13 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  authService: AuthService
 
   constructor(private dataStorageService: DataStorageService, 
-              private authService: AuthService) { }
+              authService: AuthService) {
+                this.authService = authService; 
+      // to be able to use aot when buildng project, cannot sure short command private for some reaason
+               }
 
   ngOnInit() {
   }
